@@ -36,7 +36,7 @@ function App() {
       setResultado("You Loose!");
     }
     if (escolhaPlayer === pedra && escolhaPc === pedra || escolhaPlayer === papel && escolhaPc == papel || escolhaPlayer === tesoura && escolhaPc == tesoura) {
-      setResultado("Draw");
+      setResultado("Drawn");
     }
   }
 
