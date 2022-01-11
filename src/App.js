@@ -4,13 +4,14 @@ import vegeta from './assets/vegeta.jpg';
 import pedra from './assets/pedra.png';
 import papel from './assets/papel.png';
 import tesoura from './assets/tesoura.png';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
 
   const [escolhaPlayer, setEscolhaPlayer] = useState();
   const [escolhaPc, setEscolhaPc] = useState();
   const [resultado, setResultado] = useState(" ");
+  const [rodada, setRodada] = useState(1);
 
   function jogar() {
     console.log("entrou");
@@ -28,17 +29,20 @@ function App() {
     escolha[2] = tesoura;
 
     setEscolhaPc(escolha[sorteio]);
+  }
 
-    if (escolhaPlayer === pedra && escolhaPc === tesoura || escolhaPlayer === papel && escolhaPc == pedra || escolhaPlayer === tesoura && escolhaPc == papel) {
-      setResultado("You Win!");
+  useEffect(()=> {
+    if ((escolhaPlayer === pedra && escolhaPc === tesoura) || (escolhaPlayer === papel && escolhaPc === pedra) || (escolhaPlayer === tesoura && escolhaPc === papel)) {
+      setResultado("You Wins!");
     }
-    if (escolhaPc === pedra && escolhaPlayer === tesoura || escolhaPc === papel && escolhaPlayer == pedra || escolhaPc === tesoura && escolhaPlayer == papel) {
+    if ((escolhaPc === pedra && escolhaPlayer === tesoura) || (escolhaPc === papel && escolhaPlayer === pedra) || (escolhaPc === tesoura && escolhaPlayer === papel)) {
       setResultado("You Loose!");
     }
-    if (escolhaPlayer === pedra && escolhaPc === pedra || escolhaPlayer === papel && escolhaPc == papel || escolhaPlayer === tesoura && escolhaPc == tesoura) {
-      setResultado("Drawn");
+    if ((escolhaPlayer === pedra && escolhaPc === pedra) || (escolhaPlayer === papel && escolhaPc === papel) || (escolhaPlayer === tesoura && escolhaPc === tesoura)) {
+      setResultado("Drawn Game");
     }
-  }
+    return;
+  }, [escolhaPc, escolhaPlayer])
 
   return (
     <div className="App">
@@ -49,7 +53,7 @@ function App() {
       </header>
 
       <main>
-        <h1>Rodada 1</h1>
+        <h1>Rodada {rodada}</h1>
 
         <div className="app-game">
           <div className="app-player">
@@ -58,7 +62,9 @@ function App() {
             <img src={papel} alt="mão aberta" onClick={()=> setEscolhaPlayer(papel)} />
             <img src={tesoura} alt="mão em forma de tesoura" onClick={()=> setEscolhaPlayer(tesoura)} />
             <h2>Sua escolha</h2>
-            <img src={escolhaPlayer} alt="" />
+            {escolhaPlayer &&
+            <img src={escolhaPlayer} alt="" /> }
+            
           </div>
 
           <button className="app-button" onClick={()=> jogar()}>Jogar</button>
@@ -69,7 +75,7 @@ function App() {
           </div>
         </div>
 
-        <h1>*{resultado}*</h1>
+        <h1>{resultado}</h1>
 
       </main>
 

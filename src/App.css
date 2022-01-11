@@ -19,12 +19,18 @@
 .app-player img {
   width: 100px;
   cursor: pointer;
-  background-color: blueviolet;
+  background-color: rgb(6, 0, 12);
   padding: 10px;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+.app-computer h2 {
+  margin-top: -50px;
 }
 
 .app-player img:hover{
-  background-color: aqua;
+  background-color: rgb(36, 240, 128);
 }
 
 .app-button {
@@ -32,4 +38,13 @@
   cursor: pointer;
   margin-left: 150px;
   margin-right: 200px;
+  color: rgb(5, 5, 5);
+  font-size: 24px;
+  background-color: rgb(250, 245, 245);
+  border-radius: 8px;
+}
+
+.app-button:hover {
+  background-color: rgb(12, 12, 12);
+  color: rgb(250, 248, 248);
 }
