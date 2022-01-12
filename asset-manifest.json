@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/jokenpo/static/css/main.2020ffcd.css",
+    "main.js": "/jokenpo/static/js/main.3fe8b09e.js",
+    "index.html": "/jokenpo/index.html",
+    "main.2020ffcd.css.map": "/jokenpo/static/css/main.2020ffcd.css.map",
+    "main.3fe8b09e.js.map": "/jokenpo/static/js/main.3fe8b09e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2020ffcd.css",
+    "static/js/main.3fe8b09e.js"
+  ]
+}
