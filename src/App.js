@@ -12,6 +12,9 @@ function App() {
   const [escolhaPc, setEscolhaPc] = useState();
   const [resultado, setResultado] = useState(" ");
   const [rodada, setRodada] = useState(1);
+  const [ptsPlayer, setPtsPlayer] = useState(0);
+  const [ptsPc, setPtsPc] = useState(0);
+  const [fim, setFim] = useState();
 
   function jogar() {
 
@@ -28,15 +31,41 @@ function App() {
     setEscolhaPc(escolha[sorteio]);
   }
 
+  function handleYes() {
+    setEscolhaPc();
+    setEscolhaPlayer();
+    setResultado(" ");
+    setRodada(rodada + 1);
+  }
+
+  function handleNo() {
+    setFim(1);
+    setEscolhaPlayer();
+    setEscolhaPc()
+  }
+
+  function handleReset() {
+    setEscolhaPc();
+    setEscolhaPlayer();
+    setFim();
+    setPtsPc(0);
+    setPtsPlayer(0);
+    setResultado(" ");
+    setRodada(1);
+  }
+
+
   useEffect(() => {
     if ((escolhaPlayer === pedra && escolhaPc === tesoura) || (escolhaPlayer === papel && escolhaPc === pedra) || (escolhaPlayer === tesoura && escolhaPc === papel)) {
       setResultado("Voce Venceu!");
+      setPtsPlayer(ptsPlayer + 1);
     }
     if ((escolhaPc === pedra && escolhaPlayer === tesoura) || (escolhaPc === papel && escolhaPlayer === pedra) || (escolhaPc === tesoura && escolhaPlayer === papel)) {
       setResultado("Voce Perdeu!");
+      setPtsPc(ptsPc + 1);
     }
     if ((escolhaPlayer === pedra && escolhaPc === pedra) || (escolhaPlayer === papel && escolhaPc === papel) || (escolhaPlayer === tesoura && escolhaPc === tesoura)) {
-      setResultado("Jogo Empatado!");
+      setResultado("Empate!");
     }
   }, [escolhaPc, escolhaPlayer])
 
@@ -71,12 +100,14 @@ function App() {
           </div>
         </div>
 
-        {resultado && <div className="app-modal">
+        {resultado !== " " && <div className="app-modal">
           <div className="card-modal">
-            <h1>{resultado}</h1>
-            <h2>Deseja Continuar?</h2>
-            <button>Sim</button>
-            <button>Nao</button>
+            <h1>{fim ? "Fim de Jogo" : resultado}</h1>
+            <h2>{fim ? "Resultado:" : "Deseja Continuar?"}</h2>
+            {fim ? <h2>Sua pontuação: {ptsPlayer}</h2> : <button className="btn-yes" onClick={() => handleYes()}>Sim</button>}
+            {fim ? <h2>Pontuação PC: {ptsPc}</h2> : <button className="btn-no" onClick={() => handleNo()}>Nao</button>}
+            {fim && <h1>{ptsPc > ptsPlayer ? "Vencedor: PC" : ptsPlayer > ptsPc ? "Vencedor: Player" : "Empate"}</h1>}
+            {fim && <button className="btn-reset" onClick={()=> handleReset()}>Voltar ao Início</button>}
 
           </div>
         </div>}

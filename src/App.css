@@ -5,7 +5,7 @@
 .app-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   font-size: 20px;
 }
 
@@ -56,16 +56,56 @@
     left: 0;
     right: 0;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.5);
+    
 }
 
 .card-modal {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: #FFFDFD;
+    position: relative;
+    top: 40%;
+    left: 41.5%;
+    background-color: rgba(14, 13, 13);
     width: 320px;
-    height: 300px;
+    height: 200px;
     border-radius: 8px;
     padding: 70px 20px;
+    color: aliceblue;
+}
+
+.card-modal h1 {
+  font-size: 40px;
+  margin-top: -30px;
+}
+
+.btn-yes, .btn-no {
+  padding: 5px 30px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.btn-yes:hover, .btn-no:hover {
+  background-color: aliceblue;
+  color: black;
+}
+
+.btn-yes {
+  color: aliceblue;
+  background-color: green;
+  margin-right: 20px;
+  border: none;
+}
+
+.btn-no {
+  color: aliceblue;
+  background-color: red;
+  margin-right: 20px;
+  border: none;
+}
+
+.btn-reset {
+  margin-top: 50px;
+  padding: 10px 50px;
+  color: aliceblue;
+  background-color: black;
+  cursor: pointer;
+  font-size: 20px;
 }
