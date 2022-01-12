@@ -106,7 +106,7 @@ function App() {
             <h2>{fim ? "Resultado:" : "Deseja Continuar?"}</h2>
             {fim ? <h2>Sua pontuação: {ptsPlayer}</h2> : <button className="btn-yes" onClick={() => handleYes()}>Sim</button>}
             {fim ? <h2>Pontuação PC: {ptsPc}</h2> : <button className="btn-no" onClick={() => handleNo()}>Nao</button>}
-            {fim && <h1>{ptsPc > ptsPlayer ? "Vencedor: PC" : ptsPlayer > ptsPc ? "Vencedor: Player" : "Empate"}</h1>}
+            {fim && <h1>{ptsPc > ptsPlayer ? "Vencedor: PC" : ptsPlayer > ptsPc ? "Vencedor: Player" : "Empatou"}</h1>}
             {fim && <button className="btn-reset" onClick={()=> handleReset()}>Voltar ao Início</button>}
 
           </div>
